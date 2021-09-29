@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UploadedService } from 'src/app/services/upload_service/uploaded.service';
 import { uploadView } from 'src/app/services/upload_service/uploadViewModel';
+import { environment } from 'src/environments/environment.prod';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class DescriptionComponent implements OnInit {
     this.view = res as uploadView
     console.log(this.view);
     var x=this.view.documentURL;
-    this.testUrl=`https://localhost:44386/${this.view.documentURL}`
+    this.testUrl=`${environment.Api_Url}/${this.view.documentURL}`
     this.getURL(this.view.documentURL)
     console.log(x)
     
