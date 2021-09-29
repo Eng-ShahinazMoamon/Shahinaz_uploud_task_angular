@@ -1,0 +1,53 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mt-3">
+                    <div class="card-header card-header-danger text-center ">
+                        <h4 class="card-title ">All Uplouded Files</h4>
+                        <div class="input-group no-border">
+                            <input type="text" value="" class="form-control" placeholder="Search..."[(ngModel)]="searchFilter" >
+                            <button mat-raised-button type="submit" class="btn btn-dark mr-3 ">
+                                search
+                                <div class="ripple-container"></div>
+                            </button>
+                            <button type="submit " class="btn btn-danger" routerLink="/new-file/0" routerLinkActive="active"><i class="fa fa-plus" aria-hidden="true"></i> Add </button>
+
+                        </div>
+                      </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-danger">
+                                    
+                                    <th>
+                                        Document Title
+                                    </th>
+                                    <th>
+                                        Creation Date
+                                  </th>
+                                    <th>
+                                  </th>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of getAll | filter:searchFilter " >
+                                     <td>{{item.documentTitle}}</td>
+                                      <td>{{item.creationDate |  date : 'dd/MM/yyyy'}}</td>
+                                      <td class="text-primary">
+                                          <button type="button" class="btn btn-outline-dark m-3" title="View" [routerLink]="['/new-file',2,item.id]"routerLinkActive="active"><i
+                                                  class="fa fa-eye" aria-hidden="true"></i></button>
+                                         
+                                          <button type="button" class="btn btn-outline-danger" title="Delete"(click)="DeleteItem(item.id)"><i
+                                                  class="fa fa-trash" aria-hidden="true"></i></button>
+                                      </td>
+                                  </tr>                                 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

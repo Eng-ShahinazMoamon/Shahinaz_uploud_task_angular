@@ -1,0 +1,62 @@
+
+<section class="login-form-section">
+    <div class="container ">
+      <div>
+      <img src="assets/logo.png"class="rounded mx-auto d-block " alt="Responsive image" style="width: 10%; height: 10%;">
+      </div>
+        <h3 class="text-center mt-2" id="head">Uploud New File</h3>
+        <div class="d-flex justify-content-center ">
+        <div class="card mt-5  mb-2 w-50 text-center">
+          <div class="card-header " style="background-color: #4e4d4d; color: white;">
+            Uploud New File
+          </div>
+            <div class="card-body">
+        <form #form="ngForm">
+    <div class="form-row  mt-2 mb-3">
+      <div class="form-group col-md-12">
+        <label for="inputEmail4">Document Title</label>
+        <input type="text" class="form-control" placeholder="Title"[(ngModel)]="view.documentTitle" name="title" id="title"
+        #title="ngModel" required >
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert">
+
+          <div style="color: red; " *ngIf="title.errors?.required">
+              Please Enter Document Title
+          </div>
+      </div>
+      </div>
+    </div>
+    <div class="form-row  mt-2 mb-5">
+      <div class="form-group col-md-12">
+        <label for="inputPassword4">Document Description</label>
+        <textarea type="text" class="form-control" [(ngModel)]="view.documentDescription" name="description" id="description"
+        #description="ngModel" placeholder="Description"></textarea>
+        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert">
+          <div style="color: red; " *ngIf="description.errors?.required">
+              Please Enter Document Description
+          </div>
+      </div>
+      </div>
+    </div>
+   
+    <div class="form-row mt-5 mb-5">
+      <div class="form-group col-md-12">
+    <div class="custom-file">
+      <input  #file type="file" class="custom-file-input" id="customFile"  accept='.jpg,.png,.pdf' (change)="preview(file.files);handleFileInput($event)"  >
+      <label class="custom-file-label" for="customFile">Choose file</label>
+      <img src="https://localhost:44386/wwwroot/UploadedFile/{{view.documentURL}}"  height="100" class="mt-2 mb-5 " *ngIf="imgURL">
+    </div>
+    </div>
+      </div>
+    
+    <div class="d-flex justify-content-center ">
+      <button type="submit " id="btn" class="btn btn-danger m-2"  (click)="onSave()"> Uploud </button>
+      <button type="submit " class="btn btn-outline-dark m-2" routerLink="/home" routerLinkActive="active"> Back </button>
+      <button type="submit " id="print" class="btn btn-danger m-2"  (click)="onPrint()"> Print </button>
+  
+  </div>
+  </form>
+  </div>
+  </div>
+  </div>
+    </div>
+</section>
